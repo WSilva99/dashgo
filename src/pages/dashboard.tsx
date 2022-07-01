@@ -8,7 +8,8 @@ const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 const chartConfig: apexchartsProps = {
   type: "area",
-  height: 160,
+  width: 430,
+  height: 200,
   options: {
     chart: {
       toolbar: {
@@ -35,16 +36,7 @@ const chartConfig: apexchartsProps = {
       },
       axisTicks: {
         color: theme.colors.gray['600']
-      },
-      categories: [
-        '2022-06-18T00:00:00.000Z',
-        '2022-06-19T00:00:00.000Z',
-        '2022-06-20T00:00:00.000Z',
-        '2022-06-21T00:00:00.000Z',
-        '2022-06-22T00:00:00.000Z',
-        '2022-06-23T00:00:00.000Z',
-        '2022-06-24T00:00:00.000Z'
-      ]
+      }
     },
     stroke: {
       colors: [
@@ -67,7 +59,24 @@ const chartConfig: apexchartsProps = {
   series: [
     {
       name: "series1",
-      data: [21, 120, 10, 15, 51, 109, 30]
+      data: [
+        {
+          x: new Date('2022-06-18T00:00:00.000Z'),
+          y: 86
+        },
+        {
+          x: new Date('2022-06-19T00:00:00.000Z'),
+          y: 120
+        },
+        {
+          x: new Date('2022-06-20T00:00:00.000Z'),
+          y: 97
+        },
+        {
+          x: new Date('2022-06-21T00:00:00.000Z'),
+          y: 85
+        }
+      ]
     }
   ]
 }
@@ -80,7 +89,7 @@ export default function Dashboard() {
       <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
         <Sidebar />
 
-        <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignContent="start">
+        <SimpleGrid flex="1" gap="4" minChildWidth="300px">
           <Box
             p={["6", "8"]}
             bg="gray.800"
